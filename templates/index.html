@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mi IA</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="logo">✦</span><span>Mi IA</span></div>
+    <button class="new-chat" onclick="newChat()">＋ Nuevo chat</button>
+    <div class="side-title">Herramientas</div>
+    <button class="side-btn" onclick="document.getElementById('fileInput').click()">📎 Subir archivos</button>
+    <button class="side-btn" onclick="document.getElementById('imageInput').click()">🖼️ Analizar foto</button>
+    <button class="side-btn" onclick="focusImage()">🎨 Crear imagen</button>
+    <div class="side-footer">IA multimodal · RAG</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <strong>Mi IA</strong>
+        <span class="status">● En línea</span>
+      </div>
+      <button class="icon-btn" onclick="toggleTheme()">☼</button>
+    </header>
+
+    <section id="chat" class="chat">
+      <div class="welcome">
+        <div class="welcome-icon">✦</div>
+        <h1>¿En qué puedo ayudarte?</h1>
+        <p>Analiza documentos, fotos, responde preguntas y crea imágenes.</p>
+        <div class="cards">
+          <button onclick="setPrompt('Analiza este documento y dame un resumen con los puntos principales.')">📄<b>Analizar documentos</b><span>Resume y explica archivos</span></button>
+          <button onclick="setPrompt('Analiza la imagen que voy a adjuntar y explica lo que contiene.')">🖼️<b>Analizar imágenes</b><span>Comprende fotografías</span></button>
+          <button onclick="setPrompt('crea una imagen de un aula moderna y tecnológica')">🎨<b>Crear imágenes</b><span>Genera una imagen desde texto</span></button>
+          <button onclick="setPrompt('Explícame este tema de manera sencilla, con ejemplos.')">💡<b>Aprender</b><span>Explicaciones claras</span></button>
+        </div>
+      </div>
+    </section>
+
+    <div id="attachments" class="attachments"></div>
+
+    <form id="composer" class="composer">
+      <input id="fileInput" type="file" multiple hidden accept=".pdf,.txt,.md,.docx,.csv,.json">
+      <input id="imageInput" type="file" multiple hidden accept="image/png,image/jpeg,image/webp,image/gif">
+
+      <button type="button" class="attach" title="Adjuntar archivo" onclick="document.getElementById('fileInput').click()">＋</button>
+      <textarea id="message" rows="1" placeholder="Escribe un mensaje..." autocomplete="off"></textarea>
+      <button type="button" class="image-gen" title="Crear imagen" onclick="generateImage()">🎨</button>
+      <button type="submit" class="send">➤</button>
+    </form>
+    <div class="hint">La IA puede cometer errores. Verifica información importante.</div>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
